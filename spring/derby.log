@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sun May 24 08:47:37 BST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0172-45a6-c637-00000919f6f8 
+on database directory /home/itj/repos/ashipa_v5/ashipaelectricmain with class loader org.springframework.boot.loader.LaunchedURLClassLoader@377dca04 
+Loaded from jar:file:/home/itj/repos/ashipa_v5/AshipaElectric-NEW.jar!/BOOT-INF/lib/apachederby-10.14.2.0.jar!/
+java.vendor=Ubuntu
+java.runtime.version=11.0.7+10-post-Ubuntu-2ubuntu219.10
+user.dir=/home/itj/repos/ashipa_v5
+os.name=Linux
+os.arch=amd64
+os.version=5.3.0-51-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
