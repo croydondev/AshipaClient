@@ -184,7 +184,6 @@ export class RegisterComponent implements OnInit {
       });
     }
     else{
-      alert("in here!");
       if(this.registerFormStep2.get("email").hasError('required'))
       {
         this.emailError = true;
@@ -206,7 +205,42 @@ export class RegisterComponent implements OnInit {
       }
       else{
         this.lastnameError = false;
-      }             
+      } 
+      if(this.registerFormStep2.get("phone").hasError('required'))
+      {
+        this.phoneError = true;    
+      }
+      else{
+        this.phoneError = false;
+      }
+      if(this.registerFormStep2.get("address").hasError('required'))
+      {
+        this.addressError = true;    
+      }
+      else{
+        this.addressError = false;
+      }
+      if(this.registerFormStep2.get("state").hasError('required'))
+      {
+        this.cityError = true;    
+      }
+      else{
+        this.cityError = false;
+      }
+      if(this.registerFormStep2.get("city").hasError('required'))
+      {
+        this.stateError = true;    
+      }
+      else{
+        this.stateError = false;
+      }  
+      if(this.registerFormStep2.get("country").hasError('required'))
+      {
+        this.countryError = true;    
+      }
+      else{
+        this.countryError = false;
+      } 
 
     }
   }  

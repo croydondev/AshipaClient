@@ -17,6 +17,7 @@ export class DayComponent implements OnInit {
    globalsolaravgs: number[];
    pvtemps: number[];
    voltages: number[];
+   loads: number[] = [];
 
    corerequest: CoreRequest = new CoreRequest();
 
@@ -44,18 +45,30 @@ export class DayComponent implements OnInit {
   ngOnInit() {
    this.corerequest.startdate = "2007-01-11";
    this.corerequest.enddate = "2007-01-29";
-   this.corerequest.sessionID = "wmnKG2m4goKWP1ai";
-   this.corerequest.username = "jdoe";     
+   this.corerequest.sessionID = localStorage.getItem("sessionid");
+   this.corerequest.username = localStorage.getItem("username");    
    this.usersaddress = localStorage.getItem("usersaddress");
    this._registrationService.getdailydata(this.corerequest).subscribe(cr =>
    {
-/*      
-         for (let i = 1; i <= cr.meta.count; i++) {
-            console.log(cr.body);
+         //this.loads = [cr.meta.count];
+         console.log(cr.body);
+         for (let i = 0; i < cr.meta.count; i++) {
+            //console.log(cr.body[i].load);
             //this.currents.push(cr.body);
-          }  
-*/            
-          console.log(cr.body);     
+            //this.loads.push(parseFloat(cr.body[i].load));
+            //this.loads[i] = parseInt(cr.body[i].load);
+            this.loads.push(parseFloat(cr.body[i].load));
+          }
+          console.log(this.loads);
+/*
+         for (let i = 0; i < cr.meta.count; i++) {
+            //console.log(parseFloat(this.currents[i].voltage));
+            this.loads.push();
+          }   
+*/                    
+            
+          //alert(this.loads[1]);
+          //console.log(this.loads);     
          //alert(this.currents.length);         
          //this.currents.push(cr);
    });
@@ -352,8 +365,7 @@ chartOptions6 = {
       text: ''
    },
    xAxis : {
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-              'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      categories: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23],
       crosshair: true
    },
    yAxis : [

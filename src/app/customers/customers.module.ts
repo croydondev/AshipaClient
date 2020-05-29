@@ -22,6 +22,10 @@ import { HighchartsChartModule } from 'highcharts-angular';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RegisterComponent } from './register/register.component';
+import { MydetailsComponent } from './mydetails/mydetails.component';
+import { MyrewardsComponent } from './myrewards/myrewards.component';
+import { ChargetariffComponent } from './chargetariff/chargetariff.component';
+import { MarketpreferencesComponent } from './marketpreferences/marketpreferences.component';
 
 @NgModule({
     imports: [ 
@@ -44,6 +48,10 @@ import { RegisterComponent } from './register/register.component';
                     DayComponent,
                     MonthComponent,
                     YearComponent,
-                    RegisterComponent]
+                    RegisterComponent,
+                    MydetailsComponent,
+                    MyrewardsComponent,
+                    ChargetariffComponent,
+                    MarketpreferencesComponent]
 })
 export class CustomersModule { }

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { NgbActiveModal, NgbModal, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { RegistrationService } from '../services/registration.service';
+import { Usersession } from '../models/usernameexists';
 
 @Component({
   selector: 'ngbd-modal-content',
@@ -33,9 +35,10 @@ export class NgbdModalContent {
 })
 export class LandingComponent implements OnInit {
 
+  usersession: Usersession = new Usersession();
   images = [700, 533, 807, 124].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
-  constructor(private _router: Router, private modalService: NgbModal, config: NgbCarouselConfig) { 
+  constructor(private _router: Router, private modalService: NgbModal, config: NgbCarouselConfig, private _registrationService: RegistrationService) { 
 
     // customize default values of carousels used by this component tree
     config.interval = 10000;
@@ -49,7 +52,18 @@ export class LandingComponent implements OnInit {
   }
   
   public customers() {
-    this._router.navigate(['/customer/login'])
+    this.usersession.username = localStorage.getItem("username");
+    this.usersession.sessionID = localStorage.getItem("sessionid");   
+    this._registrationService.isvalidsession(this.usersession).subscribe((result) =>
+    {
+      if(result)
+      {
+        this._router.navigate(['/customer/main'])
+      }
+      else{
+        this._router.navigate(['/customer/login'])
+      }
+    });         
   }  
   public operators() {
     //alert("seen!");

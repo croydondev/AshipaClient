@@ -55,10 +55,10 @@ export class MainComponent implements OnInit {
    this.corerequest.enddate = "2007-01-29";
    this.corerequest.sessionID = localStorage.getItem("sessionid");
    this.corerequest.username = localStorage.getItem("username");
-   this._registrationService.getyearlydata(this.corerequest).subscribe(cr =>
+   this._registrationService.gethourlydata(this.corerequest).subscribe(cr =>
     {
-      console.log(cr.body.length);
-       console.log(cr.body.toString().replace(/\\/g, ''));
+      console.log(cr.body);
+       //console.log(cr.body.toString().replace(/\\/g, ''));
        //let obj = JSON.parse('{ "name":"John", "age":30, "city":"New York"}');
        //console.log(obj);
        //let obj = JSON.parse(cr.body.toString().replace(/\\/g, ''));
