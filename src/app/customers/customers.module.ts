@@ -27,6 +27,8 @@ import { MyrewardsComponent } from './myrewards/myrewards.component';
 import { ChargetariffComponent } from './chargetariff/chargetariff.component';
 import { MarketpreferencesComponent } from './marketpreferences/marketpreferences.component';
 
+import { ToastContainerComponent } from '../widgets/toast-container/toast-container.component';
+
 @NgModule({
     imports: [ 
         CommonModule, 
@@ -52,6 +54,7 @@ import { MarketpreferencesComponent } from './marketpreferences/marketpreference
                     MydetailsComponent,
                     MyrewardsComponent,
                     ChargetariffComponent,
+                    ToastContainerComponent,
                     MarketpreferencesComponent]
 })
 export class CustomersModule { }

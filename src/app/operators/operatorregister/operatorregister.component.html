@@ -1,0 +1,142 @@
+
+<h1 style="margin-bottom: 20px">Operator Registration</h1>
+
+<div class="row">
+  <div class="col-md-5" *ngIf="regPhase == 1">
+      <form id="registerFormStep1" [formGroup]="registerFormStep1" (ngSubmit)="onRegisterFormSubmitStep1(registerFormStep1)" novalidate="novalidate">
+          <h4>Create a new account.</h4>
+          <hr>
+          <div class="text-danger validation-summary-valid" data-valmsg-summary="true"><ul><li style="display:none"></li>
+</ul></div>
+
+          <div class="form-group">
+              <label for="username">Username</label>
+              <input class="form-control" formControlName="username" type="text" data-val="true" data-val-required="The Username field is required." id="username" name="username" value="">
+              <span *ngIf="usernameError" class="text-danger field-validation-valid" data-valmsg-for="Input.Email" data-valmsg-replace="true">
+                Username field is required.
+              </span>
+          </div>
+          <div class="form-group">
+              <label for="Input_Password">Password</label>
+              <input class="form-control" formControlName="password" type="password" data-val="true" data-val-length="The Password must be at least 6 and at max 100 characters long." data-val-length-max="100" data-val-length-min="6" data-val-required="The Password field is required." id="Input_Password" maxlength="100" name="Input.Password">
+              <span *ngIf="passwordError" class="text-danger field-validation-valid" data-valmsg-for="Input.Password" data-valmsg-replace="true">
+                Password field is required.
+              </span>
+          </div>
+          <div class="form-group">
+              <label for="Input_ConfirmPassword">Confirm password</label>
+              <input class="form-control" formControlName="confirmpassword" type="password" data-val="true" data-val-equalto="The password and confirmation password do not match." data-val-equalto-other="*.Password" id="Input_ConfirmPassword" name="Input.ConfirmPassword">
+              <span *ngIf="confirmPasswordError" class="text-danger field-validation-valid" data-valmsg-for="Input.ConfirmPassword" data-valmsg-replace="true">
+                Password and confirmation password must match.
+              </span>
+          </div>
+          <div class="form-group">
+            <label for="username">Account Number</label>
+            <input class="form-control" formControlName="companycode" type="text" data-val="true" data-val-required="The Username field is required." id="username" name="username" value="">
+            <span *ngIf="usernameError" class="text-danger field-validation-valid" data-valmsg-for="Input.Email" data-valmsg-replace="true">
+              Company code field is required.
+            </span>
+        </div>          
+<!--
+        <div class="form-group">
+            <label for="state">Company Code</label>
+            <select class="form-control" formControlName="companycode" id="country" required="">
+                <option value="">Choose Country...</option>
+                <option value="AE123">Havenhill Synergy</option>
+                <option value="AE126">Darway Coast</option>
+                <option value="AE129">Ikeja Electric</option>
+              </select> 
+            <span *ngIf="companycodeError" class="text-danger field-validation-valid" data-valmsg-for="Country" data-valmsg-replace="true">
+                Company code field is required.
+            </span>
+        </div>   
+-->                                                 
+          <button id="registerSubmitStep1" type="submit" class="btn btn-primary">Register</button>
+    </form>
+  </div>
+
+<div class="col-md-5" *ngIf="regPhase == 2">
+    <form id="registerFormStep2" [formGroup]="registerFormStep2" (ngSubmit)="onRegisterFormSubmitStep2(registerFormStep2)" novalidate="novalidate">
+        <h4>Create a new account.</h4>
+        <hr>
+        <div class="text-danger validation-summary-valid" data-valmsg-summary="true"><ul><li style="display:none"></li>
+</ul></div>
+
+        <div class="form-group">
+            <label for="Input_Email">Email</label>
+            <input class="form-control" formControlName="email" type="email" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="Input_Email" name="Input.Email" value="">
+            <span *ngIf="emailError" class="text-danger field-validation-valid" data-valmsg-for="Input.Email" data-valmsg-replace="true">
+              The Email field is required.
+            </span>
+        </div>
+        <div class="form-group">
+          <label for="firstname">Firstname</label>
+          <input class="form-control" formControlName="firstname" type="text" data-val="true" data-val-required="The Firstname field is required." id="firstname" name="firstname" value="">
+          <span *ngIf="firstnameError" class="text-danger field-validation-valid" data-valmsg-for="firstname" data-valmsg-replace="true">
+              The Firstname field is required.
+          </span>
+      </div>
+      <div class="form-group">
+          <label for="lastname">Lastname</label>
+          <input class="form-control" formControlName="lastname" type="text" data-val="true" data-val-required="The Lastname field is required." id="lastname" name="lastname" value="">
+          <span *ngIf="lastnameError" class="text-danger field-validation-valid" data-valmsg-for="Lastname" data-valmsg-replace="true">
+              The Lastname field is required.
+          </span>
+      </div>  
+      <div class="form-group">
+          <label for="phone">Phone</label>
+          <input class="form-control" formControlName="phone" type="text" data-val="true" data-val-required="The Phone field is required." id="phone" name="phone" value="">
+          <span *ngIf="phoneError" class="text-danger field-validation-valid" data-valmsg-for="phone" data-valmsg-replace="true">
+              The Phone field is required.
+          </span>
+      </div>
+      <div class="form-group">
+          <label for="address">Address</label>
+          <input class="form-control" formControlName="address" type="text" data-val="true" data-val-required="The Address field is required." id="address" name="address" value="">
+          <span *ngIf="addressError" class="text-danger field-validation-valid" data-valmsg-for="address" data-valmsg-replace="true">
+              The Address field is required.
+          </span>
+      </div>   
+      <div class="form-group">
+          <label for="city">City</label>
+          <input class="form-control" formControlName="city" type="text" data-val="true" data-val-required="The City field is required." id="city" name="city" value="">
+          <span *ngIf="cityError" class="text-danger field-validation-valid" data-valmsg-for="city" data-valmsg-replace="true">
+              The City field is required.
+          </span>
+      </div>   
+      <div class="form-group">
+          <label for="state">State</label>
+          <select class="form-control" formControlName="state" id="state" required="">
+              <option value="">Choose...</option>
+              <option>Accra</option>
+              <option>California</option>
+              <option>Kumasi</option>
+              <option>Lagos</option>
+              <option>Nairobi</option>
+            </select>
+          <span *ngIf="stateError" class="text-danger field-validation-valid" data-valmsg-for="state" data-valmsg-replace="true">
+              The State field is required
+          </span>
+      </div>    
+      <div class="form-group">
+          <label for="state">Country</label>
+          <select class="form-control" formControlName="country" id="country" required="">
+              <option value="">Choose Country...</option>
+              <option>Ghana</option>
+              <option>Kenya</option>
+              <option>Nigeria</option>
+              <option>United States</option>
+            </select> 
+          <span *ngIf="countryError" class="text-danger field-validation-valid" data-valmsg-for="Country" data-valmsg-replace="true">
+            The Country field is required
+          </span>
+      </div>                                         
+        <button id="registerSubmitStep2" type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>  
+  <div class="col-md-5 col-md-offset-2">
+      <section>
+
+      </section>
+  </div>
+</div>

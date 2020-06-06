@@ -30,3 +30,20 @@ export class CoreRequest {
     enddate: string;
     sessionID: string;
 }
+
+export class GenerationResponse {
+    meta: CoreCounter;
+    body: GenerationInterval;
+}
+
+export class GenerationInterval {
+    pvoutput: string;
+    batteryoutput: string;
+    generatoroutput: string;
+}
+
+export class GenerationRequest {
+    username: string;
+    startdate: string;
+    sessionID: string;
+}

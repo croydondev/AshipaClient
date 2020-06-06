@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Usernameexists, Usersession, UserDetailsResponse, UserDetails } from '../models/usernameexists';
-import { Createuserstep1 } from '../models/createuserstep1';
+import { Createuserstep1, Createuserrole } from '../models/createuserstep1';
 import { Createuserstep2 } from '../models/createuserstep2';
 import { Login, LoginResponse } from '../models/login';
-import { Coreresponse, CoreRequest } from '../models/coreresponse';
+import { Coreresponse, CoreRequest, GenerationRequest, GenerationResponse } from '../models/coreresponse';
 
 import { Observable, of, throwError, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -66,6 +66,13 @@ export class RegistrationService {
     );
   }  
 
+  Createuserrole(occupant: Createuserrole): Observable<boolean> {
+    return this.http.post<Createuserrole>(environment.apiUrl + 'createuserrole', occupant, httpOptions).pipe(
+      tap((occup: any) => this.log(`createuserrole w/ id=${occup}`)),
+      catchError(this.handleError<Createuserrole>('createuserrole'))
+    );
+  }  
+
   checkUser(occupant: Usernameexists): Observable<Usernameexists> {
     return this.http.post<Usernameexists>(environment.apiUrl + 'usernameexists', occupant, httpOptions).pipe(
       tap((occup: Usernameexists) => this.log(`usernameexists w/ id=${occup}`)),
@@ -112,6 +119,12 @@ export class RegistrationService {
     return this.http.post<Coreresponse>(environment.apiUrl + 'getyearlydata/' + corerequest.username, corerequest, httpOptions).pipe(
       tap((occup: Coreresponse) => this.log(`getyearlydata w/ id=${occup}`)),
       catchError(this.handleError<Coreresponse>('getyearlydata'))
+    );
+  }    
+  getgenerationprofile(corerequest: GenerationRequest): Observable<GenerationResponse> {
+    return this.http.post<GenerationResponse>(environment.apiUrl + 'getgenerationprofile/' + corerequest.username, corerequest, httpOptions).pipe(
+      tap((occup: GenerationResponse) => this.log(`getgenerationprofile w/ id=${occup}`)),
+      catchError(this.handleError<GenerationResponse>('getgenerationprofile'))
     );
   }      
   private handleError<T>(operation = 'operation', result?: T) {
