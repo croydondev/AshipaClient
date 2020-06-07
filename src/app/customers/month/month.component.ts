@@ -47,8 +47,8 @@ export class MonthComponent implements OnInit {
   ngOnInit() {
    this.usersaddress = localStorage.getItem("usersaddress");
 
-   this.corerequest.startdate = "2007-01-1";
-   this.corerequest.enddate = "2007-01-31";
+   this.corerequest.startdate = "2007-05-1";
+   this.corerequest.enddate = "2007-05-31";
    this.corerequest.sessionID = localStorage.getItem("sessionid");
    this.corerequest.username = localStorage.getItem("username");  
 
@@ -61,21 +61,31 @@ export class MonthComponent implements OnInit {
          let dataPoints2 = [];
          let dataPoints3 = [];
          let dataPoints4 = [];
+         let dataPoints5 = [];
          let pvoutput = 0;		
          let batteryoutput = 0;
          let generatoroutput = 0;
+         let excessenergy = 0;
+         let load = 0;
          for ( var i = 1; i < cr.body.length; i++ ) {		  
            //y += Math.round(5 + Math.random() * (-5 - 5));	
            pvoutput = parseFloat(cr.body[i].pvoutput);
            batteryoutput = parseFloat(cr.body[i].batteryoutput);
            generatoroutput = parseFloat(cr.body[i].generatoroutput);
+           excessenergy = parseFloat(cr.body[i].excessenergy);
+           load = parseFloat(cr.body[i].load);
            dataPoints1.push({ y: pvoutput, x: new Date(2007, 0, i, 0, 0)});
            dataPoints2.push({ y: batteryoutput, x: new Date(2007, 0, i, 0, 0)});
            dataPoints3.push({ y: generatoroutput, x: new Date(2007, 0, i, 0, 0)});
+           dataPoints4.push({ y: generatoroutput, x: new Date(2007, 0, i, 0, 0)});
+           dataPoints5.push({ y: load, x: new Date(2007, 0, i, 0, 0)});
          }
         
          console.log(dataPoints1);   
          console.log(dataPoints2);
+         console.log(dataPoints3);   
+         console.log(dataPoints4);         
+         console.log(dataPoints5);            
      
          let chart1 = new CanvasJS.Chart("chartContainer2", {
            animationEnabled: true,
@@ -106,7 +116,21 @@ export class MonthComponent implements OnInit {
             type: "stackedColumn",
             showInLegend: true,
             dataPoints: dataPoints3
-          }                   
+          },
+          {
+            type: "line",
+            name: "Load",
+            legendText: "Load",
+            showInLegend: true, 
+            dataPoints: dataPoints4
+         },
+         {
+            type: "line",
+            name: "Excess Energy",
+            legendText: "Excess Energy",
+            showInLegend: true, 
+            dataPoints: dataPoints5
+         }                               
          ]
          });
            
@@ -389,12 +413,117 @@ function toolTipContent(e) {
         });     
   }  
 
+
+  private loadMonthlyProfile(month: string, year: string)
+  {
+   this.corerequest.startdate = year + "-" + month + "-1";
+   if(month == "2")
+   {
+      this.corerequest.enddate = year + "-" + month + "-28";
+   }
+   else{
+      this.corerequest.enddate = year + "-" + month + "-30";
+   }
+   this.corerequest.sessionID = localStorage.getItem("sessionid");
+   this.corerequest.username = localStorage.getItem("username");  
+
+   this._registrationService.getdailydata(this.corerequest).subscribe(cr =>
+      {
+         console.log(cr);
+
+         console.log(cr.meta);
+         let dataPoints1 = [];
+         let dataPoints2 = [];
+         let dataPoints3 = [];
+         let dataPoints4 = [];
+         let dataPoints5 = [];
+         let pvoutput = 0;		
+         let batteryoutput = 0;
+         let generatoroutput = 0;
+         let excessenergy = 0;
+         let load = 0;
+         for ( var i = 1; i < cr.body.length; i++ ) {		  
+           //y += Math.round(5 + Math.random() * (-5 - 5));	
+           pvoutput = parseFloat(cr.body[i].pvoutput);
+           batteryoutput = parseFloat(cr.body[i].batteryoutput);
+           generatoroutput = parseFloat(cr.body[i].generatoroutput);
+           excessenergy = parseFloat(cr.body[i].excessenergy);
+           load = parseFloat(cr.body[i].load);
+           dataPoints1.push({ y: pvoutput, x: new Date(2007, 0, i, 0, 0)});
+           dataPoints2.push({ y: batteryoutput, x: new Date(2007, 0, i, 0, 0)});
+           dataPoints3.push({ y: generatoroutput, x: new Date(2007, 0, i, 0, 0)});
+           dataPoints4.push({ y: generatoroutput, x: new Date(2007, 0, i, 0, 0)});
+           dataPoints5.push({ y: load, x: new Date(2007, 0, i, 0, 0)});
+         }
+        
+         console.log(dataPoints1);   
+         console.log(dataPoints2);
+         console.log(dataPoints3);   
+         console.log(dataPoints4);         
+         console.log(dataPoints5);            
+     
+         let chart1 = new CanvasJS.Chart("chartContainer2", {
+           animationEnabled: true,
+           exportEnabled: true,
+           axisX: {
+            valueFormatString: "D"
+         },
+         axisY:{
+            title: "Kwh"
+         },           
+           title: {
+             text: "Monthly Profile"
+           },
+           data: [{
+            name: "PV Output",
+             type: "stackedColumn",
+             showInLegend: true,
+             dataPoints: dataPoints1
+           },
+           {
+            name: "Battery Output",
+            type: "stackedColumn",
+            showInLegend: true,
+            dataPoints: dataPoints2
+          },
+          {
+            name: "Generator Output",
+            type: "stackedColumn",
+            showInLegend: true,
+            dataPoints: dataPoints3
+          },
+          {
+            type: "line",
+            name: "Load",
+            legendText: "Load",
+            showInLegend: true, 
+            dataPoints: dataPoints4
+         },
+         {
+            type: "line",
+            name: "Excess Energy",
+            legendText: "Excess Energy",
+            showInLegend: true, 
+            dataPoints: dataPoints5
+         }                               
+         ]
+         });
+           
+         chart1.render();
+
+
+
+
+      });      
+  }
+
   public onStartDateSelect(event: any)
   {
    this.corerequest.startdate = event.year + "-" + event.month + "-" + event.day;        
      //alert("start date: - " + event);
      console.log(event);
      //this.optFromInput = JSON.parse(this.optFromInputString2);
+     this.loadMonthlyProfile(event.month, event.year);
   }  
   public onEndDateSelect(event: any)
   {

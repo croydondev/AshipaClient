@@ -111,17 +111,24 @@ this._registrationService.gethourlydata(this.corerequest).subscribe(cr =>
       let dataPoints2 = [];
       let dataPoints3 = [];
       let dataPoints4 = [];
+      let dataPoints5 = [];
       let pvoutput = 0;		
       let batteryoutput = 0;
       let generatoroutput = 0;
+      let excessenergy = 0;
+      let load = 0;
       for ( var i = 1; i < cr.body.length; i++ ) {		  
         //y += Math.round(5 + Math.random() * (-5 - 5));	
         pvoutput = parseFloat(cr.body[i].pvoutput);
         batteryoutput = parseFloat(cr.body[i].batteryoutput);
         generatoroutput = parseFloat(cr.body[i].generatoroutput);
+        excessenergy = parseFloat(cr.body[i].excessenergy);
+        load = parseFloat(cr.body[i].load);
         dataPoints1.push({ y: pvoutput, x: new Date(2007, 0, 11, i, 0)});
         dataPoints2.push({ y: batteryoutput, x: new Date(2007, 0, 11, i, 0)});
         dataPoints3.push({ y: generatoroutput, x: new Date(2007, 0, 11, i, 0)});
+        dataPoints4.push({ y: excessenergy, x: new Date(2007, 0, 11, i, 0)});
+        dataPoints5.push({ y: load, x: new Date(2007, 0, 11, i, 0)});
       }
      
       console.log(dataPoints1);   
@@ -156,7 +163,21 @@ this._registrationService.gethourlydata(this.corerequest).subscribe(cr =>
          type: "stackedColumn",
          showInLegend: true,
          dataPoints: dataPoints3
-       }                   
+       },
+       {
+         type: "line",
+         name: "Load",
+         legendText: "Load",
+         showInLegend: true, 
+         dataPoints: dataPoints4
+      },
+      {
+         type: "line",
+         name: "Excess Energy",
+         legendText: "Excess Energy",
+         showInLegend: true, 
+         dataPoints: dataPoints5
+      }                                
       ]
       });
         
@@ -429,17 +450,24 @@ this._registrationService.gethourlydata(this.corerequest).subscribe(cr =>
          let dataPoints2 = [];
          let dataPoints3 = [];
          let dataPoints4 = [];
+         let dataPoints5 = [];
          let pvoutput = 0;		
          let batteryoutput = 0;
          let generatoroutput = 0;
+         let excessenergy = 0;
+         let load = 0;
          for ( var i = 1; i < cr.body.length; i++ ) {		  
            //y += Math.round(5 + Math.random() * (-5 - 5));	
            pvoutput = parseFloat(cr.body[i].pvoutput);
            batteryoutput = parseFloat(cr.body[i].batteryoutput);
            generatoroutput = parseFloat(cr.body[i].generatoroutput);
+           excessenergy = parseFloat(cr.body[i].excessenergy);
+           load = parseFloat(cr.body[i].load);
            dataPoints1.push({ y: pvoutput, x: new Date(2007, 0, 11, i, 0)});
            dataPoints2.push({ y: batteryoutput, x: new Date(2007, 0, 11, i, 0)});
            dataPoints3.push({ y: generatoroutput, x: new Date(2007, 0, 11, i, 0)});
+           dataPoints4.push({ y: excessenergy, x: new Date(2007, 0, 11, i, 0)});
+           dataPoints5.push({ y: load, x: new Date(2007, 0, 11, i, 0)});
          }
         
          console.log(dataPoints1);   
@@ -474,7 +502,21 @@ this._registrationService.gethourlydata(this.corerequest).subscribe(cr =>
             type: "stackedColumn",
             showInLegend: true,
             dataPoints: dataPoints3
-          }                   
+          },
+          {
+            type: "line",
+            name: "Load",
+            legendText: "Load",
+            showInLegend: true, 
+            dataPoints: dataPoints4
+         },
+         {
+            type: "line",
+            name: "Excess Energy",
+            legendText: "Excess Energy",
+            showInLegend: true, 
+            dataPoints: dataPoints5
+         }                             
          ]
          });
            
@@ -526,17 +568,24 @@ this._registrationService.gethourlydata(this.corerequest).subscribe(cr =>
          let dataPoints2 = [];
          let dataPoints3 = [];
          let dataPoints4 = [];
+         let dataPoints5 = [];
          let pvoutput = 0;		
          let batteryoutput = 0;
          let generatoroutput = 0;
-         for ( var i = 0; i < cr.body.length; i++ ) {		  
+         let excessenergy = 0;
+         let load = 0;
+         for ( var i = 1; i < cr.body.length; i++ ) {		  
            //y += Math.round(5 + Math.random() * (-5 - 5));	
            pvoutput = parseFloat(cr.body[i].pvoutput);
            batteryoutput = parseFloat(cr.body[i].batteryoutput);
            generatoroutput = parseFloat(cr.body[i].generatoroutput);
-           dataPoints1.push({ y: pvoutput, x: new Date(event.year, event.month, event.day, i, 0)});
-           dataPoints2.push({ y: batteryoutput, x: new Date(event.year, event.month, event.day, i, 0)});
-           dataPoints3.push({ y: generatoroutput, x: new Date(event.year, event.month, event.day, i, 0)});
+           excessenergy = parseFloat(cr.body[i].excessenergy);
+           load = parseFloat(cr.body[i].load);
+           dataPoints1.push({ y: pvoutput, x: new Date(2007, 0, 11, i, 0)});
+           dataPoints2.push({ y: batteryoutput, x: new Date(2007, 0, 11, i, 0)});
+           dataPoints3.push({ y: generatoroutput, x: new Date(2007, 0, 11, i, 0)});
+           dataPoints4.push({ y: excessenergy, x: new Date(2007, 0, 11, i, 0)});
+           dataPoints5.push({ y: load, x: new Date(2007, 0, 11, i, 0)});
          }
         
          console.log(dataPoints1);   
@@ -571,7 +620,21 @@ this._registrationService.gethourlydata(this.corerequest).subscribe(cr =>
             type: "stackedColumn",
             showInLegend: true,
             dataPoints: dataPoints3
-          }                   
+          },
+          {
+            type: "line",
+            name: "Load",
+            legendText: "Load",
+            showInLegend: true, 
+            dataPoints: dataPoints4
+         },
+         {
+            type: "line",
+            name: "Excess Energy",
+            legendText: "Excess Energy",
+            showInLegend: true, 
+            dataPoints: dataPoints5
+         }                          
          ]
          });
            

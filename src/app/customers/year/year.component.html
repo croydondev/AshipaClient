@@ -43,21 +43,23 @@
 
   <div class="col-md-12">
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <div class="input-group" style='width: 50%; margin-left: 50px;;'>
+      <div class="input-group" style='width: 25%; margin-left: 50px;;'>
         <input class="form-control" placeholder="yyyy-mm-dd"
                name="dp" [(ngModel)]="model1" ngbDatepicker #d1="ngbDatepicker"
-               [minDate]="{year: 2001, month: 1, day: 1}"
+               [minDate]="{year: 2007, month: 1, day: 1}"
                [maxDate]="{year: 2007, month: 12, day: 31}" (dateSelect)="onStartDateSelect($event)">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"></button>
         </div>
+<!--
         <input class="form-control" placeholder="yyyy-mm-dd"
                name="dp" [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker"
                [minDate]="{year: 2001, month: 1, day: 1}"
                [maxDate]="{year: 2007, month: 12, day: 31}" (dateSelect)="onEndDateSelect($event)">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
-        </div>        
+        </div>  
+-->                      
       </div>
       <span (click)="return()"><a style="color: #007bff; cursor: pointer; text-decoration: underline;">Return</a></span>
     </div>

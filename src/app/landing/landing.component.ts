@@ -38,7 +38,8 @@ export class NgbdModalContent {
 export class LandingComponent implements OnInit {
 
   usersession: Usersession = new Usersession();
-  images = [700, 533, 807, 124].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  images: string[] = [`../assets/andreas.jpg`, `../assets/DSC_0206-scaled.jpg`, `../assets/american-public-power-association.jpg`, `../assets/DSC_0206-scaled.jpg`];
+  //images = [700, 533, 807, 124].map((n) => `../assets/andreas.jpg`);
 
   constructor(private _router: Router, private modalService: NgbModal, config: NgbCarouselConfig, private _registrationService: RegistrationService) { 
 

@@ -697,6 +697,7 @@ function toolTipContent(e) {
 
    this._registrationService.getdailydata(this.corerequest).subscribe(cr =>
       {
+        console.log("MONTHLY BILLS");
          console.log(cr);
 
          console.log(cr.meta);
@@ -707,14 +708,16 @@ function toolTipContent(e) {
          let pvoutput = 0;		
          let batteryoutput = 0;
          let generatoroutput = 0;
+         let cost = 0;
          for ( var i = 1; i < cr.body.length; i++ ) {		  
            //y += Math.round(5 + Math.random() * (-5 - 5));	
            pvoutput = parseFloat(cr.body[i].pvoutput);
            batteryoutput = parseFloat(cr.body[i].batteryoutput);
-           generatoroutput = parseFloat(cr.body[i].generatoroutput);
+           generatoroutput = parseFloat(cr.body[i].cost);
            dataPoints1.push({ y: pvoutput, x: new Date(2007, 0, i, 0, 0)});
            dataPoints2.push({ y: batteryoutput, x: new Date(2007, 0, i, 0, 0)});
            dataPoints3.push({ y: generatoroutput, x: new Date(2007, 0, i, 0, 0)});
+           dataPoints3.push({ y: cost, x: new Date(2007, 0, i, 0, 0)});
          }
         
          console.log(dataPoints1);   

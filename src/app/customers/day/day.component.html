@@ -45,8 +45,13 @@
       <div class="input-group" style='width: 25%; margin-left: 70px;'>
         <input class="form-control" placeholder="yyyy-mm-dd"
                name="dp" [(ngModel)]="model1" ngbDatepicker #d1="ngbDatepicker"
-               [minDate]="{year: 2001, month: 1, day: 1}"
+               [minDate]="{year: 2007, month: 1, day: 1}"
                [maxDate]="{year: 2007, month: 12, day: 31}" (dateSelect)="onStartDateSelect($event)">
+
+               <!--
+               <input class="form-control" style="width: 15%;" placeholder="hh" name="hh" [(ngModel)]="model1" >               
+               <input class="form-control" style="width: 15%;" placeholder="mm" name="mm" [(ngModel)]="model1" > 
+               -->
         <div class="input-group-append">
           <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"></button>
         </div>

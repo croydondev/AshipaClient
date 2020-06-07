@@ -33,7 +33,7 @@
           <div class="form-group">
             <label for="username">Account Number</label>
             <input class="form-control" formControlName="companycode" type="text" data-val="true" data-val-required="The Username field is required." id="username" name="username" value="">
-            <span *ngIf="usernameError" class="text-danger field-validation-valid" data-valmsg-for="Input.Email" data-valmsg-replace="true">
+            <span *ngIf="companycodeError" class="text-danger field-validation-valid" data-valmsg-for="Input.Email" data-valmsg-replace="true">
               Company code field is required.
             </span>
         </div>          
