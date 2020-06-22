@@ -1,0 +1,112 @@
+<!--
+<header class="navbar fixed-top navbar-dark bg-ashipa">
+  <nav class="container">
+      <div class="navbar-brand">
+
+          <img class="img-fluid" src="assets/ashipa.png" alt="Croydon Council Logo">
+
+          <h3 style="color: white;"><a href="/landing">Ashipa</a></h3>
+        </div>  
+        
+        <ul class="nav navbar-right">
+          <li class="nav-item active"><a class="nav-link" href="#templatemo_home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#templatemo_about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#templatemo_portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#templatemo_blog">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#templatemo_contact">Contact</a></li>
+          <li class="nav-item" *ngIf="!validsession"><a class="nav-link" href="/Account/Register" id="registerLink">Register</a></li>
+          <li class="nav-item" *ngIf="!validsession"><a class="nav-link" href="/Account/Login" id="loginLink">Log in</a></li>
+          <li class="nav-item" *ngIf="validsession"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Hello</a></li>
+          <li class="nav-item" *ngIf="validsession"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>        
+        
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>  
+
+  </nav>
+</header>
+
+<main class="container">
+
+  <router-outlet></router-outlet>
+
+</main>
+
+
+<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+      <div class="container">
+          <a class="navbar-brand" href="http://ashipaelectric.com/"><img class="img-fluid" src="assets/cropped-Logo-93x92.png" alt="Croydon Council Logo"></a>
+          <button (click)="toggle()" class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                  aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngStyle]="{'display': collapse ? 'block' : 'none'}">
+
+
+            <ul class="navbar-nav">
+                  <li class="nav-item" *ngIf="validsession">  
+                    <div ngbDropdown class="d-inline-block" style="width: 100%;">
+                      <button ngbDropdownToggle type="button" class="nav-link btn btn-link text-dark">{{ usersession.username }} Account</button>
+                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button class="nav-link btn btn-link text-dark" ngbDropdownItem (click)="logout()">Change my tariff</button>
+                        <button class="nav-link btn btn-link text-dark" ngbDropdownItem (click)="logout()">My details</button>
+                        <button class="nav-link btn btn-link text-dark" ngbDropdownItem (click)="logout()">Marketing preferences</button>
+                        <button class="nav-link btn btn-link text-dark" ngbDropdownItem (click)="logout()">Logout</button>
+                      </div>                      
+                    </div>                                          
+                  </li>
+                  <li class="nav-item" *ngIf="validsession">
+                          <button  type="button" class="nav-link btn btn-link text-dark" (click)="logout()">Logout</button>
+                  </li>
+
+                  <li class="nav-item" *ngIf="!validsession">
+                      <a class="nav-link text-dark" href="customer/register">Register</a>
+                  </li>
+                  <li class="nav-item" *ngIf="!validsession">
+                      <a class="nav-link text-dark" href="customer/login">Login</a>
+                  </li>
+              </ul>                
+
+
+              <ul class="navbar-nav flex-grow-1">
+                  <li class="nav-item">
+                      <a class="nav-link text-dark" href="/landing">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link text-dark" href="http://ashipaelectric.com/">Privacy</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+</header>
+
+
+
+
+
+
+
+<div class="container">
+  <main role="main" class="pb-3">
+    
+  </main>
+</div>
+
+<footer class="border-top footer text-muted">
+  <div class="container">
+      &copy; 2020 - ASHIPA ELECTIC - <a href="http://ashipaelectric.com/">Privacy</a>
+  </div>
+</footer>
+
+-->
+
+
+<main class="container">
+
+  <router-outlet></router-outlet>
+
+</main>
