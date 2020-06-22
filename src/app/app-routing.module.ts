@@ -27,7 +27,7 @@ import { OperatorregisterComponent } from './operators/operatorregister/operator
 
 const routes: Routes = [
     { path: 'landing', component: LandingComponent },
-    { path: '', pathMatch: 'full', redirectTo: 'customer/login'},
+    //{ path: '', pathMatch: 'full', redirectTo: 'customer/login'},
     //{ path: '**', pathMatch: 'full', redirectTo: 'customer/login' },
     { path: 'customer/main', component: MainComponent, canActivate: [UrlGuardService] },
     { path: 'customer/login', component: LoginComponent },

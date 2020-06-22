@@ -27,6 +27,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this._registrationService.isvalidsession(this.usersession).subscribe(isvalid =>
       {
         this.validsession = isvalid;
+        localStorage.setItem("validsession", "" + isvalid);
       })      
   }
 
@@ -50,6 +51,7 @@ public logout() {
   this._registrationService.logout(this.usersession).subscribe(sessionstate =>
     {
       this.validsession = false;
+      localStorage.setItem("validsession", "" + false);
       console.log(sessionstate);
       this._router.navigate(['/landing']);
     });

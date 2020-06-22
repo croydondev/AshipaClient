@@ -50,7 +50,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="https://gmpg.org/xfn/11">
 
-<title>About Us – Ashipa Electric</title>
+<title>Ashipa Electric Web Portal</title>
 <link rel="dns-prefetch" href="http://fonts.googleapis.com/">
 <link rel="dns-prefetch" href="http://s.w.org/">
 <link rel="alternate" type="application/rss+xml" title="Ashipa Electric » Feed" href="http://ashipaelectric.com/feed/">
@@ -229,7 +229,8 @@ flexibility(document.documentElement);
 
     <app-root>			
         <div class="text-center mb-4">
-            <div class="spinner-border" style="width: 3rem; height: 3rem; margin-top: 300px;" role="status"></div>			
+			<div class="spinner-border" style="width: 3rem; height: 3rem; margin-top: 300px;" role="status">			
+			</div>			
         </div>					
     </app-root>
     <br /><br />
@@ -288,6 +289,15 @@ var astra = {"break_point":"921","isRtl":""};
 
 
 <script src="assets/style.min.js"></script>
+
+<script src="assets/jquery.min.js"></script>
+<script>
+	$(function(){
+
+		console.log("right here: - " + localStorage.getItem("validsession"));
+
+	});	
+</script>
 
 
 
