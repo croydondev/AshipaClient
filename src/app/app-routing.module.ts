@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 import { CustomersListComponent } from './customers/customers-list/customers-list.component';
@@ -27,6 +28,7 @@ import { OperatorregisterComponent } from './operators/operatorregister/operator
 
 const routes: Routes = [
     { path: 'landing', component: LandingComponent },
+    { path: 'logout', component: LogoutComponent },
     //{ path: '', pathMatch: 'full', redirectTo: 'customer/login'},
     //{ path: '**', pathMatch: 'full', redirectTo: 'customer/login' },
     { path: 'customer/main', component: MainComponent, canActivate: [UrlGuardService] },

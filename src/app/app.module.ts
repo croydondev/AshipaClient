@@ -43,6 +43,7 @@ import { CreateroleComponent } from './admin/createrole/createrole.component';
 import { OperatorloginComponent } from './operators/operatorlogin/operatorlogin.component';
 import { OperatormainComponent } from './operators/operatormain/operatormain.component';
 import { OperatorregisterComponent } from './operators/operatorregister/operatorregister.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import { OperatorregisterComponent } from './operators/operatorregister/operator
                     ChargetariffComponent,
                     ToastContainerComponent,
                     MarketpreferencesComponent,
-                    CreateroleComponent],
+                    CreateroleComponent,
+                    LogoutComponent],
                     bootstrap:    [ AppComponent ],
                     entryComponents: [NgbdModalContent]  
 })
